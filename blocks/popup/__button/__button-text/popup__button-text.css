@@ -1,4 +1,4 @@
-.popup__button_text {
+.popup__button-text {
     margin: 0;
     padding: 0;
     max-width: 109px;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 320px) {
-    .popup__button_text {
+    .popup__button-text {
         max-width: 74px;
         font-size: 14px;
         line-height: 17px;
