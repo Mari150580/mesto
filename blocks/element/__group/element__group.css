@@ -1,0 +1,22 @@
+.element__group {
+    margin: 5px 5px 0 0;
+    min-width: 26px;
+    min-height: 19px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #FFFFFF;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    background: url(../../../images/heart.svg);
+    background-repeat: no-repeat;
+    background-size: 19px 22px;
+}
+
+.element__group:hover {
+    opacity: 50%;
+}
+
+.element__group:active {
+    background: url(../../../images/Union.png);
+}
