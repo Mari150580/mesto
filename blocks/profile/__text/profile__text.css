@@ -1,7 +1,5 @@
 .profile__text {
-    margin: 0;
-    margin-top: 16px;
-    margin-bottom: 25px;
+    margin: 16px 0 0 0;
     font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
     font-weight: 400;
     font-size: 18px;
@@ -9,15 +7,12 @@
     grid-column-start: 1;
     grid-column-end: 3;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    
 }
 
-@media screen and (max-width: 510px) {
-    .profile__text {
-        margin: 0;
-        font-size: 14px;
-        line-height: 20px;
-    }
-}
+
 
 @media screen and (max-width: 320px) {
     .profile__text {
@@ -25,6 +20,5 @@
         font-size: 14px;
         line-height: 17px;
         margin: 0 auto 0 auto;
-        min-height: 14px;
     }
 }

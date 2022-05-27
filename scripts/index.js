@@ -2,13 +2,13 @@ const editButton = document.querySelector('.profile__edit-button');
 const popup = document.querySelector('.popup');
 const popupCloseButton = document.querySelector('.popup__close');
 const titleElement = document.querySelector('.profile__title');
-const nameTitleElement = document.querySelector('.popup__input_name');
+const nameTitleElement = document.querySelector('.popup__input_name-researcher');
 const textElement = document.querySelector ('.profile__text');
-const professiontextElement = document.querySelector ('.popup__input_profession');
+const professiontextElement = document.querySelector ('.popup__input_place-research');
 const formElement = document.querySelector('.popup__form');
 
 function openPopup(popupElement) {
-    popupElement.classList.add('popup_usOpen');
+    popupElement.classList.add('popup_usopen');
 }
 
 editButton.addEventListener('click', function() {
@@ -16,7 +16,7 @@ editButton.addEventListener('click', function() {
 })
 
 function closePopup(popupElement) {
-    popup.classList.remove('popup_usOpen');
+    popup.classList.remove('popup_usopen');
 }
 
 popupCloseButton.addEventListener('click', function() {

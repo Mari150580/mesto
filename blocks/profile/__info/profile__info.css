@@ -3,7 +3,6 @@
     min-width: 336px;
     min-height: 73px;
     display: grid;
-    grid-template-columns: 1fr, 1fr;
     grid-template-rows: repeat(2, 1fr);
 }
 
@@ -17,9 +16,6 @@
     .profile__info {
         margin: 22px 0 0 10px;
         min-width: 180px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 }
 
@@ -29,6 +25,5 @@
         padding: 0;
         min-width: 282px;
         min-height: 54px;
-        gap: 0;
     }
 }

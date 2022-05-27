@@ -11,85 +11,76 @@
     <div class="page">
         <header class="header">
             <img src="./images/logo.svg" alt="Логотип" class="header__logo">
-            <div class="header__line"></div>
         </header>
-        <main>
+        <main class="hyu">
             <section class="profile">
                 <img src="./images/custo.jpg" alt="Кусто" class="profile__avatar">
 
                 <div class="profile__info">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button">
-                        <i class="profile__vector"></i>
-                    </button>
+                    <button class="profile__edit-button" type="button" aria-label="open"></button>
                     <p class="profile__text">Исследователь океана</p>
                 </div>
-                <button class="profile__add-button">
-                    <i class="profile__cross"></i>
-                </button>
+                <button class="profile__add-button" type="button" aria-label="insert"></button>
             </section>
             <section class="elements">
-                <div class="element">
+                <article class="element">
                     <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск">
                     <div class="element__point">
                         <h2 class="element__title">Карачаевск</h2>
-                        <button class="element__group"></button>
+                        <button class="element__group" type="button" aria-label="like"></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img class="element__image" src="./images/kirill-pershin-1404681-unsplash.jpg" alt="Эльбрус">
                     <div class="element__point">
                         <h2 class="element__title">Гора Эльбрус</h2>
-                        <button class="element__group"></button>
+                        <button class="element__group" type="button" aria-label="like"></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img class="element__image" src="./images/kirill-pershin-1556355-unsplash.jpg" alt="Домбай">
                     <div class="element__point">
                         <h2 class="element__title">Домбай</h2>
-                        <button class="element__group"></button>
+                        <button class="element__group" type="button" aria-label="like"></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img class="element__image" src="./images/Коломна.jpg" alt="Коломна">
                     <div class="element__point">
                         <h2 class="element__title">Коломна</h2>
-                        <button class="element__group"></button>
+                        <button class="element__group" type="button" aria-label="like"></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img class="element__image" src="./images/Селигер.jpg" alt="Селигер">
                     <div class="element__point">
                         <h2 class="element__title">Селигер</h2>
-                        <button class="element__group"></button>
+                        <button class="element__group" type="button" aria-label="like"></button>
                     </div>
-                </div>
-                <div class="element">
+                </article>
+                <article class="element">
                     <img class="element__image" src="./images/Питер.jpg" alt="Санкт-Петербург">
                     <div class="element__point">
                         <h2 class="element__title">Санкт-Петербург</h2>
-                        <button class="element__group"></button>
+                        <button class="element__group" type="button" aria-label="like"></button>
                     </div>
-                </div>
+                </article>
             </section>
         </main>
         <footer class="footer">
-            <img class="footer__logo" src="./images/logofooter.svg" alt="Логотип">
+            <p class="footer__text">© 2020 Mesto Russia</p>
         </footer>
     </div>
     <div class="popup">
         <div class="popup__container">
-            <button class="popup__close"></button>
+            <button class="popup__close" type="reset" aria-label="close"></button>
 
             <h3 class="popup__title">Редактировать профиль</h3>
-            <form class="popup__form">
-                <input type="text" class="popup__input popup__input_name" placeholder="Жак-Ив Кусто">
-                <div class="popup__line"></div>
-                <input type="text" class="popup__input popup__input_profession" placeholder="Исследователь океана">
-                <div class="popup__line"></div>
-                <button type="submit" class="popup__button">
-                    <i class="popup__button-text">Сохранить</i>
-                </button>
+            <form class="popup__form" name="aboutMe">
+                <input type="text" class="popup__input popup__input_name-researcher" name="researcher" placeholder="Жак-Ив Кусто">
+                <input type="text" class="popup__input popup__input_place-research" name="place-research" placeholder="Исследователь океана">
+                <button type="submit" class="popup__button" aria-label="save">Сохранить</button>
             </form>
         </div>
     </div>

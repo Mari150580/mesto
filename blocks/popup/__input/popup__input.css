@@ -1,18 +1,35 @@
 .popup__input {
-    max-width: 358px;
-    min-height: 14px;
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0 0 0;
+    margin-left: auto;
+    margin-right: auto;
     border: none;
-}
-
-input::placeholder {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    width: 358px;
+    min-height: 14px;
     font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
+    outline: 0;
+}
+@media screen and (max-width: 580px) {
+    .popup__input {
+        max-width: 280px;
+    
+    }
+}
+@media screen and (max-width: 440px) {
+    .popup__input {
+        max-width: 180px;
+    
+    }
 }
 
 @media screen and (max-width: 320px) {
-    popup__input {
+    .popup__input {
         max-width: 238px;
+        margin: 75px auto 0 auto;
     }
 }
