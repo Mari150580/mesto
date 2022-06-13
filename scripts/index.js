@@ -73,9 +73,7 @@ const formElementAddButton = document.querySelector('.popup__form_add-button')
 const addButton = document.querySelector('.profile__add-button');
 const pointElementTitle = formElementAddButton.querySelector('.popup__input_type_point');
 const photoImageElement = formElementAddButton.querySelector('.popup__input_type_image');
-const popupZoom = document.querySelector('.popup-zoom');
-const popupZoomElementImage = document.querySelector('.popup-zoom__image');
-const popupZoomTitle = document.querySelector('.popup-zoom__title');
+
 
 const getCardByElement = e => e.currentTarget.parentElement.closest('.element');
 
@@ -151,13 +149,18 @@ const handleCardSubmit = e => {
 
 formElementAddButton.addEventListener('submit', handleCardSubmit);
 
+/*Создание попапа картинки*/
+/*Открытие popup-card*/
+
+const popupZoom = document.querySelector('.popup-zoom');
+const popupZoomElementImage = document.querySelector('.popup-zoom__image');
+const popupZoomTitle = document.querySelector('.popup-zoom__title');
+
 
 /*Открытие и закрытие add-button*/
 
 
 const popupAddButton = document.querySelector('.popup_add-button');
-
-const elementTitle = document.querySelector('.element__title');
 const popupCloseButtonAddButton = document.querySelector('.popup__close_add-button');
 
 addButton.addEventListener('click', function () {
