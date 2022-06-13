@@ -1,0 +1,36 @@
+.popup-zoom__close {
+    padding: 0;
+    border: none;
+    background: url(../../../images/Close\ Icon.svg);
+    background-size: 32px 32px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 610px) {
+    .popup-zoom__close {
+        background-size: 22px 22px;
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .popup-zoom__close {
+        right: 0;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .popup-zoom__close {
+        background-size: 20px 20px;
+        width: 20px;
+        height: 20px;
+        top: -30px;
+    }  
+}
