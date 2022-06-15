@@ -6,7 +6,7 @@
 * Figma
 * Картинки
 **Интро**
-https://github.com/Mari150580/mesto
+https://mari150580.github.io/mesto/
 Здесь будет проект Mesto
 
 **Figma**
