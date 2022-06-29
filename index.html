@@ -28,7 +28,7 @@
             <section class="elements">
                 <template class="elements-template">
                     <article class="element">
-                        <img class="element__image">
+                        <img class="element__image" alt="Памятное место">
                         <button class="element__baskets">
                             <img class="element__cap" src="./images/cap.svg">
                             <img class="element__basket" src="./images/basket.svg">
@@ -45,16 +45,16 @@
             <p class="footer__text">© 2020 Mesto Russia</p>
         </footer>
     </div>
-    <div class="popup">
+    <div class="popup popup_edit-button">
         <div class="popup__container">
             <button class="popup__close" type="button" aria-label="close"></button>
 
             <h3 class="popup__title">Редактировать профиль</h3>
             <form class="popup__form" name="aboutMe">
                 <input type="text" class="popup__input popup__input_type_name" name="researcher"
-                    placeholder="Жак-Ив Кусто">
+                    placeholder="Имя">
                 <input type="text" class="popup__input popup__input_type_job" name="place-research"
-                    placeholder="Исследователь океана">
+                    placeholder="Вид деятельности">
                 <button type="submit" class="popup__button" aria-label="save">Сохранить</button>
             </form>
         </div>
@@ -73,13 +73,14 @@
             </form>
         </div>
     </div>
-    <div class="popup-zoom">
-        <div class="popup-zoom__container">
-            <button class="popup-zoom__close" type="button" aria-label="close"></button>
-            <img class="popup-zoom__image">
-            <p class="popup-zoom__title"></p>
+    <div class="popup popup_zoom">
+        <div class="popup__container_zoom">
+            <button class="popup__close_zoom" type="button" aria-label="close"></button>
+            <img class="popup__image_zoom">
+            <p class="popup__title_zoom"></p>
         </div>
     </div>
     <script src="./scripts/index.js"></script>
+    <!--<script src="./initial-cards.js"></script>-->
 </body>
 </html>

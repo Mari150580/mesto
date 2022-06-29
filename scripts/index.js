@@ -1,12 +1,12 @@
 /*Первый popup*/
 
 const editButton = document.querySelector('.profile__edit-button');
-const popup = document.querySelector('.popup');
+const popup = document.querySelector('.popup_edit-button');
 const popupCloseButton = document.querySelector('.popup__close');
 const nameTitleElement = document.querySelector('.popup__input_type_name');
 const textElement = document.querySelector('.profile__text');
 const professiontextElement = document.querySelector('.popup__input_type_job');
-const formElement = document.querySelector('.popup__form');
+const formEditProfile = document.querySelector('.popup__form');
 const titleElement = document.querySelector('.profile__title');
 
 function openPopup(popupElement) {
@@ -19,13 +19,15 @@ editButton.addEventListener('click', function () {
   professiontextElement.value = textElement.textContent
 })
 
-function formSubmitHandler(event) {
+function submitEditProfileForm(event) {
   event.preventDefault();
   titleElement.textContent = nameTitleElement.value;
   textElement.textContent = professiontextElement.value;
+  formEditProfile.reset();
   closePopup(popup);
 }
-formElement.addEventListener('submit', formSubmitHandler)
+
+formEditProfile.addEventListener('submit', submitEditProfileForm)
 
 popupCloseButton.addEventListener('click', function () {
   closePopup(popup);
@@ -35,7 +37,6 @@ function closePopup(popupElement) {
 }
 
 /*Конец 1 popup*/
-
 
 /*Добавление карточек*/
 
@@ -69,62 +70,56 @@ const initialCards = [
 
 const cardTemplateElement = document.querySelector('.elements-template');
 const cardElements = document.querySelector('.elements');
-const formElementAddButton = document.querySelector('.popup__form_add-button')
+const formAddCard = document.querySelector('.popup__form_add-button')
 const addButton = document.querySelector('.profile__add-button');
-const pointElementTitle = formElementAddButton.querySelector('.popup__input_type_point');
-const photoImageElement = formElementAddButton.querySelector('.popup__input_type_image');
-
+const pointElementTitle = formAddCard.querySelector('.popup__input_type_point');
+const photoImageElement = formAddCard.querySelector('.popup__input_type_image');
+const popupZoom = document.querySelector('.popup_zoom');
+const popupZoomElementImage = document.querySelector('.popup__image_zoom');
+const popupZoomTitle = document.querySelector('.popup__title_zoom');
 
 const getCardByElement = e => e.currentTarget.parentElement.closest('.element');
-
-/*Открытие zoom-popup*/
-function openZoomPopup(popupElement) {
-  popupElement.classList.add('popup-zoom_open');
-};
-
-/*Закрытие zoom-popup*/
-
-const popupZoomClose = document.querySelector('.popup-zoom__close');
-
-function closePopupZoom (popupElement) {
-  popupElement.classList.remove('popup-zoom_open');
-};
-
-popupZoomClose.addEventListener('click', function() {
-  closePopupZoom(popupZoom);
-});
 
 const createCard = item => {
   const card = cardTemplateElement.content
     .querySelector('.element')
     .cloneNode(true);
   card.querySelector('.element__title').textContent = item.name;
-  card.querySelector('.element__image').src = item.link
+  card.querySelector('.element__image').src = item.link;
+  card.querySelector('.element__image').alt = item.name;
 
-/*удаление*/
-card.querySelector('.element__baskets').addEventListener('click', e =>  {
-  const card = getCardByElement(e);
-  card.remove();
-});
+  /*удаление*/
+  card.querySelector('.element__baskets').addEventListener('click', e => {
+    const card = getCardByElement(e);
+    card.remove();
+  });
 
-/*Лайк*/
+  /*Лайк*/
 
-card.querySelector('.element__group').addEventListener('click', e =>  {
-const like = e.currentTarget.classList.toggle('element__group_active');
-});
+  card.querySelector('.element__group').addEventListener('click', e => {
+    const like = e.currentTarget.classList.toggle('element__group_active');
+  });
 
-/*zoom-popup работа*/
+  /*zoom-popup работа*/
 
-card.querySelector('.element__image').addEventListener('click', evt =>  {
-  const image = evt.target;
-  const elementContainer = image.closest('.element');
-  const title = elementContainer.querySelector('.element__title');
-  console.log(title);
+  card.querySelector('.element__image').addEventListener('click', evt => {
+    const image = evt.target;
+    const elementContainer = image.closest('.element');
+    const title = elementContainer.querySelector('.element__title');
 
-  popupZoomElementImage.src = image.src;
-  popupZoomTitle.textContent = title.textContent;
+    popupZoomElementImage.src = image.src;
+    popupZoomElementImage.alt = title.textContent
+    popupZoomTitle.textContent = title.textContent;
 
-  openZoomPopup(popupZoom);
+    openPopup(popupZoom);
+  });
+
+/*Закрытие zoom-popup*/
+
+const popupZoomClose = document.querySelector('.popup__close_zoom');
+
+popupZoomClose.addEventListener('click', function () {
+  closePopup(popupZoom);
 });
 
   return card;
@@ -137,28 +132,7 @@ const addCard = item => {
 
 initialCards.forEach(addCard);
 
-const handleCardSubmit = e => {
-  e.preventDefault();
-   const newCart = {
-    name: pointElementTitle.value,
-    link: photoImageElement.value,
-  }
-  addCard(newCart);
-  formElementAddButton.reset();
-}
-
-formElementAddButton.addEventListener('submit', handleCardSubmit);
-
-/*Создание попапа картинки*/
-/*Открытие popup-card*/
-
-const popupZoom = document.querySelector('.popup-zoom');
-const popupZoomElementImage = document.querySelector('.popup-zoom__image');
-const popupZoomTitle = document.querySelector('.popup-zoom__title');
-
-
 /*Открытие и закрытие add-button*/
-
 
 const popupAddButton = document.querySelector('.popup_add-button');
 const popupCloseButtonAddButton = document.querySelector('.popup__close_add-button');
@@ -167,10 +141,16 @@ addButton.addEventListener('click', function () {
   openPopup(popupAddButton);
 });
 
-formElementAddButton.addEventListener('submit', formSubmitHandlerAdd);
+formAddCard.addEventListener('submit', submitAddCardForm);
 
-function formSubmitHandlerAdd(event) {
-  event.preventDefault();
+function submitAddCardForm(e) {
+  e.preventDefault();
+  const newCart = {
+    name: pointElementTitle.value,
+    link: photoImageElement.value,
+  }
+  addCard(newCart);
+  formAddCard.reset();
   closePopup(popupAddButton);
 };
 
