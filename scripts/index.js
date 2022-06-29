@@ -13,6 +13,10 @@ function openPopup(popupElement) {
   popupElement.classList.add('popup_usopen');
 }
 
+function closePopup(popupElement) {
+  popupElement.classList.remove('popup_usopen');
+};
+
 editButton.addEventListener('click', function () {
   openPopup(popup);
   nameTitleElement.value = titleElement.textContent;
@@ -32,9 +36,6 @@ formEditProfile.addEventListener('submit', submitEditProfileForm)
 popupCloseButton.addEventListener('click', function () {
   closePopup(popup);
 })
-function closePopup(popupElement) {
-  popup.classList.remove('popup_usopen');
-}
 
 /*Конец 1 popup*/
 
@@ -77,6 +78,7 @@ const photoImageElement = formAddCard.querySelector('.popup__input_type_image');
 const popupZoom = document.querySelector('.popup_zoom');
 const popupZoomElementImage = document.querySelector('.popup__image');
 const popupZoomHeading = document.querySelector('.popup__heading');
+const popupZoomClose = document.querySelector('.popup__close_zoom');
 
 const getCardByElement = e => e.currentTarget.parentElement.closest('.element');
 
@@ -114,16 +116,13 @@ const createCard = item => {
     openPopup(popupZoom);
   });
 
+  return card;
+};
+
 /*Закрытие zoom-popup*/
-
-const popupZoomClose = document.querySelector('.popup__close_zoom');
-
 popupZoomClose.addEventListener('click', function () {
   closePopup(popupZoom);
 });
-
-  return card;
-};
 
 const addCard = item => {
   const card = createCard(item);
@@ -152,10 +151,6 @@ function submitAddCardForm(e) {
   addCard(newCart);
   formAddCard.reset();
   closePopup(popupAddButton);
-};
-
-function closePopup(popupElement) {
-  popupElement.classList.remove('popup_usopen');
 };
 
 popupCloseButtonAddButton.addEventListener('click', function () {
