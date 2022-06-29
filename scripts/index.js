@@ -75,8 +75,8 @@ const addButton = document.querySelector('.profile__add-button');
 const pointElementTitle = formAddCard.querySelector('.popup__input_type_point');
 const photoImageElement = formAddCard.querySelector('.popup__input_type_image');
 const popupZoom = document.querySelector('.popup_zoom');
-const popupZoomElementImage = document.querySelector('.popup__image_zoom');
-const popupZoomTitle = document.querySelector('.popup__title_zoom');
+const popupZoomElementImage = document.querySelector('.popup__image');
+const popupZoomHeading = document.querySelector('.popup__heading');
 
 const getCardByElement = e => e.currentTarget.parentElement.closest('.element');
 
@@ -109,7 +109,7 @@ const createCard = item => {
 
     popupZoomElementImage.src = image.src;
     popupZoomElementImage.alt = title.textContent
-    popupZoomTitle.textContent = title.textContent;
+    popupZoomHeading.textContent = title.textContent;
 
     openPopup(popupZoom);
   });

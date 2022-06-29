@@ -10,6 +10,11 @@
     right: -40px;
     cursor: pointer;
 }
+@media screen and (max-width: 935px) {
+    .popup__close_zoom {
+        right: 0;
+    }
+}
 
 @media screen and (max-width: 610px) {
     .popup__close_zoom {
@@ -19,11 +24,6 @@
     }
 }
 
-@media screen and (max-width: 440px) {
-    .popup__close_zoom {
-        right: 0;
-    }
-}
 
 @media screen and (max-width: 320px) {
     .popup__close_zoom {
