@@ -1,8 +1,8 @@
 /*Первый popup*/
 
 const editButton = document.querySelector('.profile__edit-button');
-const popup = document.querySelector('.popup_edit-button');
-const popupCloseButton = document.querySelector('.popup__close');
+const popupEditProfile = document.querySelector('.popup_edit-button');
+const popupEditProfileCloseButton = document.querySelector('.popup__close');
 const nameTitleElement = document.querySelector('.popup__input_type_name');
 const textElement = document.querySelector('.profile__text');
 const professiontextElement = document.querySelector('.popup__input_type_job');
@@ -18,7 +18,7 @@ function closePopup(popupElement) {
 };
 
 editButton.addEventListener('click', function () {
-  openPopup(popup);
+  openPopup(popupEditProfile);
   nameTitleElement.value = titleElement.textContent;
   professiontextElement.value = textElement.textContent
 })
@@ -28,13 +28,13 @@ function submitEditProfileForm(event) {
   titleElement.textContent = nameTitleElement.value;
   textElement.textContent = professiontextElement.value;
   formEditProfile.reset();
-  closePopup(popup);
+  closePopup(popupEditProfile);
 }
 
 formEditProfile.addEventListener('submit', submitEditProfileForm)
 
-popupCloseButton.addEventListener('click', function () {
-  closePopup(popup);
+popupEditProfileCloseButton.addEventListener('click', function () {
+  closePopup(popupEditProfile);
 })
 
 /*Конец 1 popup*/
@@ -156,3 +156,42 @@ function submitAddCardForm(e) {
 popupCloseButtonAddButton.addEventListener('click', function () {
   closePopup(popupAddButton);
 });
+
+
+/*Валидация формы*/
+const submitButtonElement = document.querySelector('#submit');
+const inputList = Array.from(document.querySelectorAll('.popup__input')
+);
+const formElement = document.querySelector('.popup__form');
+const isInputValid = inputElement =>{
+  return inputElement.checkValidity();
+};
+const activeError = (errorElement, errorMessage) => {
+  const conteinerElement = errorElement.closest('.input-conteiner');
+  conteinerElement.classList.add('input-conteiner__invalid');
+  errorElement.textContent = errorMessage;
+};
+const resetError = errorElement => {
+  const conteinerElement = errorElement.closest('.input-conteiner');
+  conteinerElement.classList.remove('input-conteiner__invalid');
+  errorElement.textContent = ' ';
+};
+formElement.addEventListener('submit', evt =>{
+  evt.preventDefault();
+let isFormValid = true;
+inputList.forEach(inputElement =>{
+  const errorElement = document.querySelector(`#error-${inputElement.id}`);
+
+  if (!isInputValid(inputElement)){
+    isFormValid = false;
+    activeError(errorElement, inputElement.validationMessage);
+  } else {
+    resetError(errorElement);
+  }
+});
+  console.log(isFormValid);
+});
+
+
+
+

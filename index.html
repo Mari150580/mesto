@@ -50,15 +50,33 @@
             <button class="popup__close" type="button" aria-label="close"></button>
 
             <h3 class="popup__title">Редактировать профиль</h3>
-            <form class="popup__form" name="aboutMe">
-                <input type="text" class="popup__input popup__input_type_name" name="researcher"
-                    placeholder="Имя">
-                <input type="text" class="popup__input popup__input_type_job" name="place-research"
-                    placeholder="Вид деятельности">
-                <button type="submit" class="popup__button" aria-label="save">Сохранить</button>
+            <form class="popup__form" name="aboutMe" novalidate>
+                <div class="input-conteiner">
+                <input type="text" 
+                  class="popup__input popup__input_type_name" 
+                  name="researcher"
+                  placeholder="Имя" 
+                  minlength="2" 
+                  maxlength="40" 
+                  id="name" 
+                  required>
+                    <span id="error-name" class="popup__input-error name-input-error"></span>
+                </div>
+                <div class="input-conteiner">
+                <input type="text" 
+                  class="popup__input popup__input_type_job" 
+                  name="place-research"
+                  placeholder="Вид деятельности" 
+                  minlength="2" 
+                  maxlength="200" 
+                  id="job" 
+                  required>
+                  <span id="error-job" class="popup__input-error job-input-error"></span>
+                </div>
+                <button id="submit" type="submit" class="popup__button" aria-label="save">Сохранить</button>
             </form>
         </div>
-    </div>
+    </div>         
     <div class="popup popup_add-button">
         <div class="popup__container">
             <button class="popup__close popup__close_add-button" type="button" aria-label="close"></button>
@@ -66,9 +84,9 @@
             <h3 class="popup__title">Новое место</h3>
             <form class="popup__form popup__form_add-button" name="newPlace">
                 <input type="text" class="popup__input popup__input_type_point" name="place-travel"
-                    placeholder="Название">
+                    placeholder="Название" id="point">
                 <input type="src" class="popup__input popup__input_type_image" name="photo"
-                    placeholder="Ссылка на картинку">
+                    placeholder="Ссылка на картинку" id="image">
                 <button type="submit" class="popup__button" aria-label="save">Создать</button>
             </form>
         </div>
