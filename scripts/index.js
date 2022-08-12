@@ -31,12 +31,25 @@ function submitEditProfileForm(event) {
   closePopup(popupEditProfile);
 }
 
-formEditProfile.addEventListener('submit', submitEditProfileForm)
+formEditProfile.addEventListener('submit', submitEditProfileForm);
+
+/*Закрытие popup popupEditProfile*/
 
 popupEditProfileCloseButton.addEventListener('click', function () {
   closePopup(popupEditProfile);
-})
+});
 
+popupEditProfile.addEventListener('click', function (evt) {
+  if(evt.target.classList.remove('popup_usopen')) {
+    popupEditProfile(evt.target);
+  }
+}); 
+document.addEventListener('keydown', function (evt) {
+  if(evt.key === 'Escape') {
+    closePopup(popupEditProfile);
+  }
+});
+  
 /*Конец 1 popup*/
 
 /*Добавление карточек*/
@@ -108,11 +121,9 @@ const createCard = item => {
     const image = evt.target;
     const elementContainer = image.closest('.element');
     const title = elementContainer.querySelector('.element__title');
-
     popupZoomElementImage.src = image.src;
     popupZoomElementImage.alt = title.textContent
     popupZoomHeading.textContent = title.textContent;
-
     openPopup(popupZoom);
   });
 
@@ -120,6 +131,18 @@ const createCard = item => {
 };
 
 /*Закрытие zoom-popup*/
+popupZoom.addEventListener('click', function (evt) {
+  if(evt.target.classList.remove('popup_usopen')) {
+    popupZoom(evt.target);
+  }
+}); 
+
+document.addEventListener('keydown', function (evt) {
+  if(evt.key === 'Escape') {
+    closePopup(popupZoom);
+  }
+}); 
+
 popupZoomClose.addEventListener('click', function () {
   closePopup(popupZoom);
 });
@@ -153,45 +176,18 @@ function submitAddCardForm(e) {
   closePopup(popupAddButton);
 };
 
+popupAddButton.addEventListener('click', function (evt) {
+  if(evt.target.classList.remove('popup_usopen')) {
+    popupAddButton(evt.target);
+  }
+});
+/*  Закрытие popup popupAddButton*/
 popupCloseButtonAddButton.addEventListener('click', function () {
   closePopup(popupAddButton);
 });
 
-
-/*Валидация формы*/
-const submitButtonElement = document.querySelector('#submit');
-const inputList = Array.from(document.querySelectorAll('.popup__input')
-);
-const formElement = document.querySelector('.popup__form');
-const isInputValid = inputElement =>{
-  return inputElement.checkValidity();
-};
-const activeError = (errorElement, errorMessage) => {
-  const conteinerElement = errorElement.closest('.input-conteiner');
-  conteinerElement.classList.add('input-conteiner__invalid');
-  errorElement.textContent = errorMessage;
-};
-const resetError = errorElement => {
-  const conteinerElement = errorElement.closest('.input-conteiner');
-  conteinerElement.classList.remove('input-conteiner__invalid');
-  errorElement.textContent = ' ';
-};
-formElement.addEventListener('submit', evt =>{
-  evt.preventDefault();
-let isFormValid = true;
-inputList.forEach(inputElement =>{
-  const errorElement = document.querySelector(`#error-${inputElement.id}`);
-
-  if (!isInputValid(inputElement)){
-    isFormValid = false;
-    activeError(errorElement, inputElement.validationMessage);
-  } else {
-    resetError(errorElement);
+document.addEventListener('keydown', function (evt) {
+  if(evt.key === 'Escape') {
+    closePopup(popupAddButton);
   }
 });
-  console.log(isFormValid);
-});
-
-
-
-

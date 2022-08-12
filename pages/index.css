@@ -37,3 +37,5 @@
 @import url(../blocks/popup/_usopen/popup_usopen.css);
 @import url(../blocks/input-conteiner/input-conteiner.css);
 @import url(../blocks/input-conteiner/__invalid/input-conteiner__invalid.css);
+@import url(../blocks/button/_inactive/button_inactive.css);
+@import url(../blocks/input/input.css);

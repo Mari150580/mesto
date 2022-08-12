@@ -17,7 +17,10 @@
     line-height: 22px;
     text-align: center;
 }
-
+.popup__button_inactive {
+    opacity: 50%;
+    background: white;
+}
 .popup__button:hover {
     opacity: 50%;
 }

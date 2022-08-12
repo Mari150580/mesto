@@ -60,7 +60,7 @@
                   maxlength="40" 
                   id="name" 
                   required>
-                    <span id="error-name" class="popup__input-error name-input-error"></span>
+                    <span id="error-name" class="popup__input-error name-error"></span>
                 </div>
                 <div class="input-conteiner">
                 <input type="text" 
@@ -71,9 +71,9 @@
                   maxlength="200" 
                   id="job" 
                   required>
-                  <span id="error-job" class="popup__input-error job-input-error"></span>
+                  <span id="error-job" class="popup__input-error job-error"></span>
                 </div>
-                <button id="submit" type="submit" class="popup__button" aria-label="save">Сохранить</button>
+                <button id="submit" type="submit" class="popup__button button" aria-label="save">Сохранить</button>
             </form>
         </div>
     </div>         
@@ -83,11 +83,28 @@
 
             <h3 class="popup__title">Новое место</h3>
             <form class="popup__form popup__form_add-button" name="newPlace">
-                <input type="text" class="popup__input popup__input_type_point" name="place-travel"
-                    placeholder="Название" id="point">
-                <input type="src" class="popup__input popup__input_type_image" name="photo"
-                    placeholder="Ссылка на картинку" id="image">
-                <button type="submit" class="popup__button" aria-label="save">Создать</button>
+                <div class="input-conteiner">
+                <input type="text" 
+                       class="popup__input popup__input_type_point" 
+                       name="place-travel"
+                       placeholder="Название" 
+                       minlength="2" 
+                       maxlength="30"
+                       id="point"
+                       required>
+                <span class="popup__input-error point-error" id="error-point"></span>
+                </div>
+                <div class="input-conteiner">
+                <input 
+                       class="popup__input popup__input_type_image" 
+                       name="photo"
+                       placeholder="Ссылка на картинку" 
+                       id="image"
+                       type="url"
+                       required>
+                <span class="popup__input-error image-error" id="error-image"></span>     
+                </div> 
+                <button type="submit" class="popup__button button" aria-label="save">Создать</button>
             </form>
         </div>
     </div>
@@ -99,5 +116,6 @@
         </div>
     </div>
     <script src="./scripts/index.js"></script>  
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>
