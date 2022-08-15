@@ -6,7 +6,7 @@ const popupEditProfileCloseButton = document.querySelector('.popup__close');
 const nameTitleElement = document.querySelector('.popup__input_type_name');
 const textElement = document.querySelector('.profile__text');
 const professiontextElement = document.querySelector('.popup__input_type_job');
-const formEditProfile = document.querySelector('.popup__form');
+const formEditProfile = document.querySelector('.popup__form_edit-button');
 const titleElement = document.querySelector('.profile__title');
 
 function openPopup(popupElement) {
@@ -18,10 +18,19 @@ function closePopup(popupElement) {
 };
 
 editButton.addEventListener('click', function () {
+  formEditProfile.reset();
+  const inputList = Array.from(formEditProfile.querySelectorAll('.popup__input'));
+  const buttonElement = formEditProfile.querySelector('.popup__button');
+  toggleButtonState(inputList, buttonElement);
+  
   openPopup(popupEditProfile);
   nameTitleElement.value = titleElement.textContent;
-  professiontextElement.value = textElement.textContent
-})
+  professiontextElement.value = textElement.textContent;
+
+  let eventInput = new Event("input");
+  nameTitleElement.dispatchEvent(eventInput);
+  professiontextElement.dispatchEvent(eventInput);
+});
 
 function submitEditProfileForm(event) {
   event.preventDefault();
@@ -29,7 +38,7 @@ function submitEditProfileForm(event) {
   textElement.textContent = professiontextElement.value;
   formEditProfile.reset();
   closePopup(popupEditProfile);
-}
+};
 
 formEditProfile.addEventListener('submit', submitEditProfileForm);
 
@@ -160,6 +169,10 @@ const popupAddButton = document.querySelector('.popup_add-button');
 const popupCloseButtonAddButton = document.querySelector('.popup__close_add-button');
 
 addButton.addEventListener('click', function () {
+  formAddCard.reset();
+  const inputList = Array.from(formAddCard.querySelectorAll('.popup__input'));
+  const buttonElement = formAddCard.querySelector('.popup__button');
+  toggleButtonState(inputList, buttonElement);
   openPopup(popupAddButton);
 });
 
