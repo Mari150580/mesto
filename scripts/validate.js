@@ -4,13 +4,11 @@ const formElement = document.querySelector('.popup__form');
 const inputElement = formElement.querySelectorAll('.popup__input');
 
 const showInputError = (formElement, inputElement, errorMessage) => {
-  
   const errorElement = formElement.querySelector(`#error-${inputElement.id}`);
   const conteinerElement = errorElement.closest('.input-conteiner');
   conteinerElement.classList.add('input-conteiner__invalid');
   errorElement.textContent = errorMessage;
 };
-
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`#error-${inputElement.id}`);
@@ -22,14 +20,10 @@ const hideInputError = (formElement, inputElement) => {
 const isValid =(formElement, inputElement) =>{
   if(!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
-    console.log('не так');
   } else {
     hideInputError(formElement, inputElement);
-    console.log('правильно');
   }
 };
-
-
 
 const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
@@ -70,7 +64,6 @@ const enableValidation =() => {
     setEventListeners(formElement);
   });
 };
-
 
 enableValidation({
     formElement: '.popup__form',

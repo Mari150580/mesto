@@ -18,10 +18,8 @@ function closePopup(popupElement) {
 };
 
 editButton.addEventListener('click', function () {
-  formEditProfile.reset();
   const inputList = Array.from(formEditProfile.querySelectorAll('.popup__input'));
   const buttonElement = formEditProfile.querySelector('.popup__button');
-
   toggleButtonState(inputList, buttonElement);
   
   openPopup(popupEditProfile);
