@@ -1,6 +1,6 @@
 /*валидация формы*/
 
-const validationConfig = {
+const config = {
   formElement: '.popup__form',
   inputElement: '.popup__input',
   buttonElement: '.popup__button',
@@ -8,7 +8,7 @@ const validationConfig = {
   inputErrorClass: 'popup__input_error',
   errorClass: 'popup__error_visible',
   inputConteinerInvalid: 'input-conteiner__invalid',
-  conteinerInput: 'input-conteiner'
+  conteinerInput: '.input-conteiner'
 }; 
 
 const showInputError = (formElement, inputElement, errorMessage, config) => {
@@ -16,6 +16,7 @@ const showInputError = (formElement, inputElement, errorMessage, config) => {
   const conteinerElement = errorElement.closest(config.conteinerInput);
   conteinerElement.classList.add(config.inputConteinerInvalid);
   errorElement.textContent = errorMessage;
+  
 };
 
 const hideInputError = (formElement, inputElement, config) => {
@@ -73,4 +74,4 @@ const enableValidation =(config) => {
   });
 };
 
-enableValidation(validationConfig);
+enableValidation(config);
