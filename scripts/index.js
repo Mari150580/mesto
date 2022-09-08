@@ -2,12 +2,10 @@
 import {Card} from './card.js'
 import {FormValidator} from './formValidator.js'
 
-
 /*Первый popup*/
 
 const editButton = document.querySelector('.profile__edit-button');
 const popupEditProfile = document.querySelector('.popup_edit-button');
-/*const popupEditProfileCloseButton = document.querySelector('.popup__close');*/
 const nameTitleElement = document.querySelector('.popup__input_type_name');
 const textElement = document.querySelector('.profile__text');
 const professiontextElement = document.querySelector('.popup__input_type_job');
@@ -21,9 +19,8 @@ function openPopup(popupElement) {
 }
 
 editButton.addEventListener('click', function () {
-  /*const inputList = Array.from(formEditProfile.querySelectorAll('.popup__input'));
-  const buttonElement = formEditProfile.querySelector('.popup__button');
-  toggleButtonState(inputList, buttonElement, config);*/
+  const formValidEditProfile = new FormValidator(config, formEditProfile);
+  formValidEditProfile.enableValidation();
   openPopup(popupEditProfile);
   nameTitleElement.value = titleElement.textContent;
   professiontextElement.value = textElement.textContent;
@@ -97,15 +94,10 @@ const initialCards = [
   }
 ];
 
-/*const cardTemplateElement = document.querySelector('.elements-template');
-const cardElements = document.querySelector('.elements');*/
 const addButton = document.querySelector('.profile__add-button');
 const popupZoom = document.querySelector('.popup_zoom');
 const popupZoomElementImage = document.querySelector('.popup__image');
 const popupZoomHeading = document.querySelector('.popup__heading');
-/*const popupZoomClose = document.querySelector('.popup__close_zoom');
-
-const getCardByElement = e => e.currentTarget.closest('.element');*/
 
   const cardImage = item => {
     const card = new Card(item.name, item.link);
@@ -118,7 +110,7 @@ const getCardByElement = e => e.currentTarget.closest('.element');*/
   /*Данные формы*/
 const config = {
   formElement: '.popup__form',
-  inputElement: '.popup__input',
+  inputPopup: '.popup__input',
   buttonElement: '.popup__button',
   inactiveButton: 'button_inactive',
   inputErrorClass: 'popup__input_error',
@@ -129,36 +121,18 @@ const config = {
 const formAddCard = document.querySelector('.popup__form_add-button');
 const pointElementTitle = formAddCard.querySelector('.popup__input_type_point');
 const photoImageElement = formAddCard.querySelector('.popup__input_type_image');
-/*const formValidAddCard = new FormValidator(config, formAddCard);
-formValidAddCard.enableValidation();*/
-
-
-
-
-
-
 
 /*Открытие и закрытие add-button*/
 
 const popupAddButton = document.querySelector('.popup_add-button');
-/*const popupCloseButtonAddButton = document.querySelector('.popup__close_add-button');*/
 
 addButton.addEventListener('click', function () {
   const formValidAddCard = new FormValidator(config, formAddCard);
 formValidAddCard.enableValidation();
-  /*formAddCard.reset();
-  const inputList = Array.from(formAddCard.querySelectorAll('.popup__input'));
-  const buttonElement = formAddCard.querySelector('.popup__button');
-  toggleButtonState(inputList, buttonElement, config);*/
   openPopup(popupAddButton);
-
 });
 
-
-
-
 formAddCard.addEventListener('submit', submitAddCardForm);
-
 
 function submitAddCardForm(e) {
   e.preventDefault();
