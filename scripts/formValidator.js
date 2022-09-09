@@ -3,6 +3,7 @@ export class FormValidator {
   constructor(config, formElement){
     this._config = config;
     this._formElement= formElement;
+    this._buttonElement = this._formElement.querySelector(this._config.buttonElement)
   }
   
 /*обработчики событий*/
@@ -46,11 +47,11 @@ _hideInputError() {
   /*отключает кнопку*/
 _toggleButtonState () {
   if(this._hasInvalidInput()) {
-    this._formElement.querySelector(this._config.buttonElement).classList.add(this._config.inactiveButton);
-    this._formElement.querySelector(this._config.buttonElement).setAttribute('disabled', 'disabled');
+    this._buttonElement.classList.add(this._config.inactiveButton);
+    this._buttonElement.setAttribute('disabled', 'disabled');
     } else {
-      this._formElement.querySelector(this._config.buttonElement).classList.remove(this._config.inactiveButton);
-      this._formElement.querySelector(this._config.buttonElement).removeAttribute('disabled');
+      this._buttonElement.classList.remove(this._config.inactiveButton);
+      this._buttonElement.removeAttribute('disabled');
     }
 };
 

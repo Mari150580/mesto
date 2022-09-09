@@ -11,6 +11,18 @@ const textElement = document.querySelector('.profile__text');
 const professiontextElement = document.querySelector('.popup__input_type_job');
 const formEditProfile = document.querySelector('.popup__form_edit-button');
 const titleElement = document.querySelector('.profile__title');
+const elements = document.querySelector('.elements');
+/*Данные формы*/
+const config = {
+  formElement: '.popup__form',
+  inputPopup: '.popup__input',
+  buttonElement: '.popup__button',
+  inactiveButton: 'button_inactive',
+  inputErrorClass: 'popup__input_error',
+  errorClass: 'popup__error_visible',
+  inputConteinerInvalid: 'input-conteiner__invalid',
+  conteinerInput: '.input-conteiner'
+}; 
 
 function openPopup(popupElement) {
   popupElement.classList.add('popup_opened'); 
@@ -18,9 +30,10 @@ function openPopup(popupElement) {
   document.addEventListener('click', closeByMous);
 }
 
-editButton.addEventListener('click', function () {
-  const formValidEditProfile = new FormValidator(config, formEditProfile);
+const formValidEditProfile = new FormValidator(config, formEditProfile);
   formValidEditProfile.enableValidation();
+
+editButton.addEventListener('click', function () {
   openPopup(popupEditProfile);
   nameTitleElement.value = titleElement.textContent;
   professiontextElement.value = textElement.textContent;
@@ -99,25 +112,7 @@ const popupZoom = document.querySelector('.popup_zoom');
 const popupZoomElementImage = document.querySelector('.popup__image');
 const popupZoomHeading = document.querySelector('.popup__heading');
 
-  const cardImage = item => {
-    const card = new Card(item.name, item.link);
-    const cardElement = card.generateCard();
-    document.querySelector('.elements').prepend(cardElement);
-  }; 
-  
-  initialCards.forEach(cardImage);
-
   /*Данные формы*/
-const config = {
-  formElement: '.popup__form',
-  inputPopup: '.popup__input',
-  buttonElement: '.popup__button',
-  inactiveButton: 'button_inactive',
-  inputErrorClass: 'popup__input_error',
-  errorClass: 'popup__error_visible',
-  inputConteinerInvalid: 'input-conteiner__invalid',
-  conteinerInput: '.input-conteiner'
-}; 
 const formAddCard = document.querySelector('.popup__form_add-button');
 const pointElementTitle = formAddCard.querySelector('.popup__input_type_point');
 const photoImageElement = formAddCard.querySelector('.popup__input_type_image');
@@ -126,23 +121,45 @@ const photoImageElement = formAddCard.querySelector('.popup__input_type_image');
 
 const popupAddButton = document.querySelector('.popup_add-button');
 
-addButton.addEventListener('click', function () {
-  const formValidAddCard = new FormValidator(config, formAddCard);
+const formValidAddCard = new FormValidator(config, formAddCard);
 formValidAddCard.enableValidation();
+
+addButton.addEventListener('click', function () {
   openPopup(popupAddButton);
 });
 
 formAddCard.addEventListener('submit', submitAddCardForm);
 
-function submitAddCardForm(e) {
-  e.preventDefault();
-  const newCart = {
-    name: pointElementTitle.value,
-    link: photoImageElement.value,
-  }
-  cardImage(newCart);
+/*карты*/
+
+const createCard= item => {
+  const card = new Card(item.name, item.link);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
+  initialCards.forEach((item) => {
+    const card = createCard(item);
+    document.querySelector('.elements').append(card);
+  });
+
+  function submitAddCardForm(e) {
+    e.preventDefault();
+  const name = pointElementTitle.value;
+  const link = photoImageElement.value;
+  const card = createCard({name, link});
+  document.querySelector('.elements').prepend(card);
   formAddCard.reset();
   closePopup(popupAddButton);
-};
+  };
 
-export {popupZoomElementImage, popupZoomHeading, openPopup, popupZoom};
+/*zoom*/
+
+function handleCardClick(name, link) {
+  popupZoomElementImage.src =  link;
+  popupZoomElementImage.alt = name;
+  popupZoomHeading.textContent = name;
+  openPopup(popupZoom);
+}
+
+export {handleCardClick};
