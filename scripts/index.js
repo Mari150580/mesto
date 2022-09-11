@@ -140,7 +140,7 @@ const createCard= item => {
 
   initialCards.forEach((item) => {
     const card = createCard(item);
-    document.querySelector('.elements').append(card);
+    elements.append(card);
   });
 
   function submitAddCardForm(e) {
@@ -148,7 +148,7 @@ const createCard= item => {
   const name = pointElementTitle.value;
   const link = photoImageElement.value;
   const card = createCard({name, link});
-  document.querySelector('.elements').prepend(card);
+  elements.prepend(card);
   formAddCard.reset();
   closePopup(popupAddButton);
   };
