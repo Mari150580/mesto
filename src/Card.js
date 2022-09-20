@@ -1,15 +1,14 @@
-import {handleCardClick} from './index.js'
 
-export class Card {
-    constructor(name, link) {
-  this._link = link;
-  this._name = name;
-  this._handleCardClick = handleCardClick;
+  export class Card {
+    constructor({data, handleImageOpenPopup}, cardSelector) {
+      this._data = data;
+      this._cardSelector = cardSelector;
+      this._handleImageOpenPopup = handleImageOpenPopup;
     }
 
     _getTemplate() {
       const cardElement = document
-        .querySelector('.elements-template')
+        .querySelector(this._cardSelector)
         .content
         .querySelector('.element')
         .cloneNode(true);
@@ -23,15 +22,17 @@ export class Card {
       this._deleteСard = this._element.querySelector('.element__baskets');
       this._setEventListenersAll();
 
-    this._element.querySelector('.element__title').textContent = this._name;
-    this._cardImage.src = this._link;
-    this._cardImage.alt = this._link;
+    this._element.querySelector('.element__title').textContent = this._data.name;
+    this._cardImage.src = this._data.link;
+    this._cardImage.alt = this._data.link;
+    this._cardImage.addEventListener('click', () => this._handleImageOpenPopup(this._data));
     return this._element;
-      }
+      
+    }
+
   
        /*Лайк*/
       _handleLikeClick() {
-        
         this._likeButton.classList.toggle('element__group_active');
       }
   
@@ -48,9 +49,6 @@ export class Card {
         });
         this._deleteСard.addEventListener('click', () => {
           this._handleRemoveClick();
-        });
-        this._cardImage.addEventListener('click', () => {
-          this._handleCardClick(this._name, this._link);
         });
     }
   }
