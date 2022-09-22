@@ -10,7 +10,9 @@ module.exports = {
     filename: "[name].[contenthash].js",
     clean: true,
   },
+  mode: 'development',
   devtool: "inline-source-map",
+  
   
   module: {
     rules: [{
@@ -20,7 +22,7 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
-        type: 'asset/resource',
+        type: 'asset/resource'
       },
       {
         test: /\.css$/,
@@ -35,6 +37,7 @@ module.exports = {
       },
     ]
   },
+  
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'

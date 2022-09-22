@@ -7,6 +7,7 @@ import {PopupWithImage} from './PopupWithImage.js';
 import {UserInfo} from './UserInfo.js';
 import "./styles/index.css";
 
+
 /*Первый popup*/
 const editButton = document.querySelector('.profile__edit-button');
 const formEditProfile = document.querySelector('.popup__form_edit-button');
