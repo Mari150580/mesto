@@ -1,118 +1,177 @@
 <!DOCTYPE html>
 <html lang="ru">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Место</title>
-</head>
+  </head>
 
-<body class="sprint">
+  <body class="sprint">
     <div class="page">
-        <header class="header"> 
-            <img src="<%=require('./images/logo.svg')%>" alt="Логотип" class="header__logo">
-        </header>
-        <main>
-            <section class="profile">
-                <img src="<%=require('./images/custo.jpg')%>" alt="Кусто" class="profile__avatar">
+      <header class="header">
+        <img
+          src="<%=require('./images/logo.svg')%>"
+          alt="Логотип"
+          class="header__logo"
+        />
+      </header>
+      <main>
+        <section class="profile">
+          <img
+            src="<%=require('./images/custo.jpg')%>"
+            alt="Кусто"
+            class="profile__avatar"
+          />
 
-                <div class="profile__info">
-                    <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button class="profile__edit-button" type="button" aria-label="open"></button>
-                    <p class="profile__text">Исследователь океана</p>
-                </div>
-                <button class="profile__add-button" type="button" aria-label="insert"></button>
-            </section>
+          <div class="profile__info">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button
+              class="profile__edit-button"
+              type="button"
+              aria-label="open"
+            ></button>
+            <p class="profile__text">Исследователь океана</p>
+          </div>
+          <button
+            class="profile__add-button"
+            type="button"
+            aria-label="insert"
+          ></button>
+        </section>
 
-            <section class="elements">
-                <template class="elements-template">
-                    <article class="element">
-                        <img class="element__image" alt="Памятное место">
-                        <button class="element__baskets">
-                            <img class="element__cap" src="<%=require('./images/cap.svg')%>">
-                            <img class="element__basket" src="<%=require('./images/basket.svg')%>">
-                        </button>
-                        <div class="element__point">
-                            <h2 class="element__title"></h2>
-                            <button class="element__group" type="button" aria-label="like"></button>
-                        </div>
-                    </article>
-                </template>
-            </section>
-        </main>
-        <footer class="footer">
-            <p class="footer__text">© 2020 Mesto Russia</p>
-        </footer>
+        <section class="elements">
+          <template class="elements-template">
+            <article class="element">
+              <img class="element__image" alt="Памятное место" />
+              <button class="element__baskets">
+                <img
+                  class="element__cap"
+                  src="<%=require('./images/cap.svg')%>"
+                />
+                <img
+                  class="element__basket"
+                  src="<%=require('./images/basket.svg')%>"
+                />
+              </button>
+              <div class="element__point">
+                <h2 class="element__title"></h2>
+                <button
+                  class="element__group"
+                  type="button"
+                  aria-label="like"
+                ></button>
+              </div>
+            </article>
+          </template>
+        </section>
+      </main>
+      <footer class="footer">
+        <p class="footer__text">© 2020 Mesto Russia</p>
+      </footer>
     </div>
     <div class="popup popup_edit-button">
-        <div class="popup__container">
-            <button class="popup__close" type="button" aria-label="close"></button>
+      <div class="popup__container">
+        <button class="popup__close" type="button" aria-label="close"></button>
 
-            <h3 class="popup__title">Редактировать профиль</h3>
-            <form class="popup__form popup__form_edit-button" name="aboutMe" novalidate>
-                <div class="input-conteiner">
-                <input type="text" 
-                  class="popup__input popup__input_type_name" 
-                  name="researcher"
-                  placeholder="Имя" 
-                  minlength="2" 
-                  maxlength="40" 
-                  id="name" 
-                  required>
-                    <span id="error-name" class="popup__input-error name-error"></span>
-                </div>
-                <div class="input-conteiner">
-                <input type="text" 
-                  class="popup__input popup__input_type_job" 
-                  name="place-research"
-                  placeholder="Вид деятельности" 
-                  minlength="2" 
-                  maxlength="200" 
-                  id="job" 
-                  required>
-                  <span id="error-job" class="popup__input-error job-error"></span>
-                </div>
-                <button id="submit" type="submit" class="popup__button button" aria-label="save">Сохранить</button>
-            </form>
-        </div>
-    </div>         
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form
+          class="popup__form popup__form_edit-button"
+          name="aboutMe"
+          novalidate
+        >
+          <div class="input-conteiner">
+            <input
+              type="text"
+              class="popup__input popup__input_type_name"
+              name="name"
+              placeholder="Имя"
+              minlength="2"
+              maxlength="40"
+              id="name"
+              required
+            />
+            <span id="error-name" class="popup__input-error name-error"></span>
+          </div>
+          <div class="input-conteiner">
+            <input
+              type="text"
+              class="popup__input popup__input_type_job"
+              name="job"
+              placeholder="Вид деятельности"
+              minlength="2"
+              maxlength="200"
+              id="job"
+              required
+            />
+            <span id="error-job" class="popup__input-error job-error"></span>
+          </div>
+          <button
+            id="submit"
+            type="submit"
+            class="popup__button button"
+            aria-label="save"
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
     <div class="popup popup_add-button">
-        <div class="popup__container">
-            <button class="popup__close popup__close_add-button" type="button" aria-label="close"></button>
+      <div class="popup__container">
+        <button
+          class="popup__close popup__close_add-button"
+          type="button"
+          aria-label="close"
+        ></button>
 
-            <h3 class="popup__title">Новое место</h3>
-            <form class="popup__form popup__form_add-button" name="newPlace">
-                <div class="input-conteiner">
-                <input type="text" 
-                       class="popup__input popup__input_type_point" 
-                       name="name"
-                       placeholder="Название" 
-                       minlength="2" 
-                       maxlength="30"
-                       id="pointe"
-                       required>
-                <span class="popup__input-error pointe-error" id="error-pointe"></span>
-                </div>
-                <div class="input-conteiner">
-                <input 
-                       class="popup__input popup__input_type_image" 
-                       name="link"
-                       placeholder="Ссылка на картинку" 
-                       id="image"
-                       type="url"
-                       required>
-                <span class="popup__input-error image-error" id="error-image"></span>     
-                </div> 
-                <button type="submit" class="popup__button button" aria-label="save">Создать</button>
-            </form>
-        </div>
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__form popup__form_add-button" name="newPlace">
+          <div class="input-conteiner">
+            <input
+              type="text"
+              class="popup__input popup__input_type_point"
+              name="name"
+              placeholder="Название"
+              minlength="2"
+              maxlength="30"
+              id="pointe"
+              required
+            />
+            <span
+              class="popup__input-error pointe-error"
+              id="error-pointe"
+            ></span>
+          </div>
+          <div class="input-conteiner">
+            <input
+              class="popup__input popup__input_type_image"
+              name="link"
+              placeholder="Ссылка на картинку"
+              id="image"
+              type="url"
+              required
+            />
+            <span
+              class="popup__input-error image-error"
+              id="error-image"
+            ></span>
+          </div>
+          <button type="submit" class="popup__button button" aria-label="save">
+            Создать
+          </button>
+        </form>
+      </div>
     </div>
     <div class="popup popup_zoom">
-        <div class="popup__block">
-            <button class="popup__close popup__close_zoom" type="button" aria-label="close"></button>
-            <img class="popup__image">
-            <p class="popup__heading"></p>
-        </div>
+      <div class="popup__block">
+        <button
+          class="popup__close popup__close_zoom"
+          type="button"
+          aria-label="close"
+        ></button>
+        <img class="popup__image" />
+        <p class="popup__heading"></p>
+      </div>
     </div>
-</body>
+  </body>
 </html>
