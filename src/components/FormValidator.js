@@ -54,13 +54,21 @@ export class FormValidator {
   }
 
   /*отключает кнопку*/
+  disabledButton() {
+    this._buttonElement.classList.add(this._config.inactiveButton);
+    this._buttonElement.setAttribute("disabled", "disabled");
+  }
+
+  disabledButtonActiv() {
+    this._buttonElement.classList.remove(this._config.inactiveButton);
+    this._buttonElement.removeAttribute("disabled");
+  }
+
   _toggleButtonState() {
-    if (this._hasInvalidInput()) {
-      this._buttonElement.classList.add(this._config.inactiveButton);
-      this._buttonElement.setAttribute("disabled", "disabled");
+    if (!this._hasInvalidInput()) {
+      this.disabledButtonActiv();
     } else {
-      this._buttonElement.classList.remove(this._config.inactiveButton);
-      this._buttonElement.removeAttribute("disabled");
+      this.disabledButton();
     }
   }
 
