@@ -34,6 +34,7 @@ export class FormValidator {
     this._errorElement = this._formElement.querySelector(
       `#error-${this._inputElement.id}`
     );
+    
     this._conteinerElement = this._errorElement.closest(
       this._config.conteinerInput
     );

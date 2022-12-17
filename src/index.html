@@ -17,12 +17,18 @@
       </header>
       <main>
         <section class="profile">
+          <div class="profile__userpic">
           <img
             src="<%=require('./images/custo.jpg')%>"
             alt="Кусто"
             class="profile__avatar"
           />
-
+          <button
+              class="profile__button-userpic"
+              type="button"
+              aria-label="open"
+            ></button>
+          </div>
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button
@@ -55,11 +61,14 @@
               </button>
               <div class="element__point">
                 <h2 class="element__title"></h2>
+                <div class="element__group">
                 <button
-                  class="element__group"
+                  class="element__like"
                   type="button"
                   aria-label="like"
                 ></button>
+                <span class="element__counters-likes"> 0 </span>
+                </div>
               </div>
             </article>
           </template>
@@ -96,14 +105,14 @@
             <input
               type="text"
               class="popup__input popup__input_type_job"
-              name="job"
+              name="about"
               placeholder="Вид деятельности"
               minlength="2"
               maxlength="200"
-              id="job"
+              id="about"
               required
             />
-            <span id="error-job" class="popup__input-error job-error"></span>
+            <span id="error-about" class="popup__input-error about-error"></span>
           </div>
           <button
             id="submit"
@@ -173,5 +182,54 @@
         <p class="popup__heading"></p>
       </div>
     </div>
+      <div class="popup popup_remove">
+        <div class="popup__container popup__container_remove">
+        <button
+          class="popup__close popup__close_remove-button"
+          type="button"
+          aria-label="close"
+        ></button>
+        <h3 class="popup__title popup__title_remove">Вы уверены?</h3>
+        <form class="popup__form popup__form_remove" name="newPlace" novalidate>
+        <button type="submit" class="remove__card button" aria-label="save">
+          Да
+        </button>
+      </form>
+        </div>
+        <button
+          class="popup__close popup__close_remove"
+          type="button"
+          aria-label="close"
+        ></button>
+      </div>
+      <div class="popup popup_changing-avatar">
+        <div class="popup__container">
+          <h3 class="popup__title">Обновить аватар</h3>
+          <form class="popup__form popup__form_changing-avatar" name="newPlace" novalidate>
+            <div class="input-conteiner">
+              <button
+            class="popup__close popup__close_add-button"
+            type="button"
+            aria-label="close"
+          ></button>
+              <input
+                class="popup__input popup__input_type_image"
+                name="avatar"
+                placeholder="Ссылка на картинку аватарки"
+                id="image"
+                type="url"
+                required
+              />
+              <span
+                class="popup__input-error image-error"
+                id="error-image"
+              ></span>
+            </div>
+            <button type="submit" class="popup__button button" aria-label="save" disabled>
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
   </body>
 </html>

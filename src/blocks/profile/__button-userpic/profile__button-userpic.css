@@ -1,0 +1,41 @@
+.profile__button-userpic {
+    margin-left: 18px;
+    margin-top: 15px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ffffff;
+    background-color: black;
+    cursor: pointer;
+    background-image: url(../../../images/Vector.svg);
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-self:center;
+    z-index: 0;
+    position: absolute;
+    left: 260px;
+  
+  }
+  
+  .profile__button-userpic:hover {
+    opacity: 50%;
+    z-index: 2;
+  }
+
+  @media screen and (max-width: 670px) {
+    .profile__button-userpic {
+      left: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 510px) {
+    .profile__button-userpic {
+      left: 0px;
+    }
+  }
+  
+  
+  
