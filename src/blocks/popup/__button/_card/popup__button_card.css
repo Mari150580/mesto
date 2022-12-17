@@ -1,4 +1,4 @@
-.remove__card {
+.popup__button_card {
     padding: 0;
     border: none;
     margin: 0 auto 36px auto;
@@ -17,28 +17,28 @@
     line-height: 22px;
     text-align: center;
   }
-  .remove__card_inactive {
+  .popup__button_card_inactive {
     opacity: 50%;
     background: white;
   }
-  .remove__card:hover {
+  .popup__button_card:hover {
     opacity: 50%;
   }
   
   @media screen and (max-width: 580px) {
-    .remove__card {
+    .popup__button_card {
       width: 280px;
     }
   }
   
   @media screen and (max-width: 440px) {
-    .remove__card {
+    .popup__button_card {
       width: 200px;
     }
   }
   
   @media screen and (max-width: 320px) {
-    .remove__card {
+    .popup__button_card {
       margin: 45px auto 25px auto;
       min-width: 238px;
       min-height: 46px;
@@ -46,4 +46,3 @@
       line-height: 17px;
     }
   }
-  
