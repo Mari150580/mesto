@@ -1,4 +1,3 @@
-import { Promise } from "core-js";
 
 export class Api{
 #onResponse(response){

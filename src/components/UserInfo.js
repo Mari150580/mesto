@@ -1,10 +1,9 @@
 export class UserInfo {
-  constructor({data, profileText, profileTitle, pofileAvatar, handleAvatarClick}) {
+  constructor({data, profileText, profileTitle, pofileAvatar}) {
     this._data = data;
     this._name = profileText;
     this._about = profileTitle;
     this._avatar = pofileAvatar; 
-    this._handleAvatarClick = handleAvatarClick;
   }
   getUserInfo() {
     return {

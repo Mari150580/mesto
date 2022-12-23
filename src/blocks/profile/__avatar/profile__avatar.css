@@ -8,9 +8,16 @@
 }
 
 .profile__avatar:hover {
-  opacity: 50%;
+    opacity: 50%;
+    background-image: url(../../../images/Vector.svg);
+    z-index: 2;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
   
 }
+
+
 
 @media screen and (max-width: 670px) {
   .profile__avatar {

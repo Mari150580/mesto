@@ -1,13 +1,14 @@
 /*Подключение*/
-import { Card } from "./components/Card.js";
-import { FormValidator } from "./components/FormValidator.js";
-import { Section } from "./components/Section.js";
-import { PopupWithForm } from "./components/PopupWithForm.js";
-import { PopupWithImage } from "./components/PopupWithImage.js";
-import { UserInfo } from "./components/UserInfo.js";
-import { config, profileTitle, profileText,  pofileAvatar} from "./utils/constants.js";
-import "./styles/index.css";
-import { Api } from "./components/api.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Section } from "../components/Section.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { UserInfo } from "../components/UserInfo.js";
+import { config, profileTitle, profileText,  pofileAvatar} from "../utils/constants.js";
+import "./index.css";
+import { Api } from "../components/Api.js";
+
 
 /*Api*/
 
@@ -23,6 +24,7 @@ const api = new Api(configs);
 /*Первый popup*/
 const buttonEditProfile = document.querySelector(".profile__edit-button");
 const formEditProfile = document.querySelector(".popup__form_edit-button");
+const buttonPopup = document.querySelector(".popup__button");
 
 
 /*Форма Профиля*/
@@ -30,14 +32,18 @@ const userNew = new UserInfo({profileText,
   profileTitle, 
   pofileAvatar});
 
-/*1.загрузка данных с сервера*/
-api.getAllProfile()
-  .then(function(data){
-    userNew.setUserInfo(data);
-  })
-  .catch(function(err){
-    console.log('Ошибка', err);
-  });
+/*1.получение id и загрузка данных*/
+
+api.getAllInfo()
+.then(([profileData, postAllCards]) => {
+  userId = profileData._id;
+  section.rendererItem(postAllCards);
+  userNew.setUserInfo(profileData);
+  
+})
+.catch(function(err){
+  console.log('Ошибка', err);
+});
 
 /*2.редактирование профиля*/
 
@@ -47,14 +53,22 @@ formValidEditProfile.enableValidation();
 
 /*Отправка запроса на сервер и смена данных пользователя*/
 function handleEditFormSubmit(formItemObject) {
+  const initialText = buttonPopup.textContent;
+  buttonPopup.textContent = 'Сохранение...';
+
   api.addNewProfile(formItemObject)
   .then((res) => { 
     userNew.setUserInfo(res);
+    popupEditCard.close();
+  })
+  .finally(() => {
+    buttonPopup.textContent = initialText
   })
   .catch(function(err){
     console.log('Ошибка', err);
   });
 };
+
 
 const popupEditCard = new PopupWithForm(
   ".popup_edit-button",
@@ -66,7 +80,9 @@ popupEditCard.setEventListeners();
 buttonEditProfile.addEventListener("click", function () {
   popupEditCard.open();
   formValidEditProfile.disabledButton();
-  userNew.getUserInfo();
+  /*const {name, about} = userNew.getUserInfo();
+  nameInput.value = name;
+  jobInput.value =about;*/
 });
 
 
@@ -74,6 +90,7 @@ buttonEditProfile.addEventListener("click", function () {
 
 const buttonAvatar = document.querySelector(".profile__avatar");
 const formAvatar = document.querySelector(".popup__form_changing-avatar");
+const avatarRemove = document.querySelector(".popup__button-avatar")
 
 
 const formValidAvatar = new FormValidator(config, formAvatar);
@@ -87,9 +104,15 @@ popupAvatar.setEventListeners();
 
 
 function handleAvatarClick(data) {
+  const initialText = avatarRemove.textContent;
+  avatarRemove.textContent = 'Сохранение...';
   api.addNewAvatar(data.avatar)
   .then((res) => { 
     userNew.setUserInfo(res);
+    popupAvatar.close();
+  })
+  .finally(() => {
+    avatarRemove.textContent = initialText;
   })
   .catch(function(err){
     console.log('Ошибка', err);
@@ -97,10 +120,11 @@ function handleAvatarClick(data) {
   
 }
 
+
+
 buttonAvatar.addEventListener("click", function () {
   popupAvatar.open();
   formValidAvatar.disabledButton();
-  userNew.getUserInfo();
 });
 
 /*zoom*/
@@ -120,7 +144,11 @@ function handleRemoveClick(cardInstance) {
   api.removeCard(cardInstance.getId())
   .then(() => {
     cardInstance.remove();
+    popupRemove.close();
   })
+  .catch(function(err){
+    console.log('Ошибка', err);
+  });
 })
 };
 
@@ -131,6 +159,9 @@ function putLikeCard(instance) {
   .then(dataCardServer => {
     instance.resetLikeData(dataCardServer)
   })
+  .catch(function(err){
+    console.log('Ошибка', err);
+  });
 }
 
 const popupZoomImage = new PopupWithImage(".popup_zoom");
@@ -157,30 +188,25 @@ const section = new Section(".elements", (dataElements) => {
   section.addItem(createCard(dataElements));
 });
 
-/*получение id и загрузка данных*/
-
-api.getAllInfo()
-.then(([profileData, postAll]) => {
-  userId = profileData._id;
-  section.rendererItem(postAll);
-})
-.catch(function(err){
-  console.log('Ошибка', err);
-});
-
-
-
 /*Форма Новое место добавление новой карточки*/
 
 /*1.Валидация формы Новое место*/
 const formValidAddCard = new FormValidator(config, formAddCard);
 formValidAddCard.enableValidation();
 
+const buttonCardRemove = document.querySelector(".popup__button-add")
+
 /*2.добавление новой карточки*/
 function handleAddFormSubmit( formItemObject) {
+  const initialText = buttonCardRemove.textContent;
+  buttonCardRemove.textContent = 'Создание...';
   api.addNewTasks(formItemObject)
   .then((data) => { 
     section.addItem(createCard(data));
+    popupAddCard.close();
+  })
+  .finally(() => {
+    buttonCardRemove.textContent = initialText
   })
   .catch(function(err){
     console.log('Ошибка', err);
@@ -194,6 +220,3 @@ buttonAddCard.addEventListener("click", function () {
   popupAddCard.open();
   formValidAddCard.disabledButton();
 });
-
-
-

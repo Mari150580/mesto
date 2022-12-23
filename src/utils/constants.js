@@ -11,5 +11,6 @@ export const config = {
 
 export const profileTitle = document.querySelector(".profile__title");
 export const profileText = document.querySelector(".profile__text");
-export const pofileAvatar = document.querySelector(".profile__avatar")
+export const pofileAvatar = document.querySelector(".profile__avatar");
+
 

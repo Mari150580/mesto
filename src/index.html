@@ -17,18 +17,11 @@
       </header>
       <main>
         <section class="profile">
-          <div class="profile__userpic">
           <img
             src="<%=require('./images/custo.jpg')%>"
             alt="Кусто"
             class="profile__avatar"
           />
-          <button
-              class="profile__button-userpic"
-              type="button"
-              aria-label="open"
-            ></button>
-          </div>
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button
@@ -44,7 +37,6 @@
             aria-label="insert"
           ></button>
         </section>
-
         <section class="elements">
           <template class="elements-template">
             <article class="element">
@@ -165,7 +157,7 @@
               id="error-image"
             ></span>
           </div>
-          <button type="submit" class="popup__button button" aria-label="save" disabled>
+          <button type="submit" class="popup__button popup__button-add button" aria-label="save" disabled>
             Создать
           </button>
         </form>
@@ -204,19 +196,19 @@
       </div>
       <div class="popup popup_changing-avatar">
         <div class="popup__container">
-          <h3 class="popup__title">Обновить аватар</h3>
-          <form class="popup__form popup__form_changing-avatar" name="newPlace" novalidate>
-            <div class="input-conteiner">
-              <button
-            class="popup__close popup__close_add-button"
+          <button
+            class="popup__close"
             type="button"
             aria-label="close"
           ></button>
+          <h3 class="popup__title">Обновить аватар</h3>
+          <form class="popup__form popup__form_changing-avatar" name="newPlace" novalidate>
+            <div class="input-conteiner">
               <input
                 class="popup__input popup__input_type_image"
                 name="avatar"
                 placeholder="Ссылка на картинку аватарки"
-                id="image-avatar"
+                id="avatar"
                 type="url"
                 required
               />
@@ -225,7 +217,7 @@
                 id="error-avatar"
               ></span>
             </div>
-            <button type="submit" class="popup__button button" aria-label="save" disabled>
+            <button type="submit" class="popup__button popup__button-avatar button" aria-label="save" disabled>
               Сохранить
             </button>
           </form>

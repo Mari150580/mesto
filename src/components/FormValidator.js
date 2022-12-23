@@ -3,13 +3,13 @@ export class FormValidator {
     this._config = config;
     this._formElement = formElement;
     this._buttonElement = this._formElement.querySelector(this._config.buttonElement);
+    this._inputList = Array.from(
+      this._formElement.querySelectorAll(this._config.inputPopup)
+    );
   }
 
   /*обработчики событий*/
   _setEventListeners() {
-    this._inputList = Array.from(
-      this._formElement.querySelectorAll(this._config.inputPopup)
-    );
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._inputElement = inputElement;
