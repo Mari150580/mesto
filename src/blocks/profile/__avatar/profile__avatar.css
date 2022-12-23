@@ -1,3 +1,14 @@
+
+.avatar{
+  z-index: 5;
+  background: url(../../../images/Vector.svg);
+  background-position: center;
+   background-repeat: no-repeat;
+   background-size: 10px 10px;
+}
+
+
+
 .profile__avatar {
   border-radius: 50%;
   width: 120px;
@@ -5,18 +16,27 @@
   object-fit: cover;
   position: relative;
   z-index: 1;
-}
-
-.profile__avatar:hover {
-    opacity: 50%;
-    background-image: url(../../../images/Vector.svg);
-    z-index: 2;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 10px 10px;
   
 }
 
+.avatar:hover{
+  opacity: 50%;/*
+  background: url(../../../images/Vector.svg);*/
+   z-index: 2;
+   /*background-position: center;
+   background-repeat: no-repeat;
+   background-size: 10px 10px;*/
+}
+
+  /*.profile__avatar::before {
+
+    /*opacity: 50%;*/
+   /* background-image: url(../../../images/Vector.svg);
+    /*z-index: 2;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 10px 10px;*/
+  
 
 
 @media screen and (max-width: 670px) {

@@ -25,6 +25,8 @@ const api = new Api(configs);
 const buttonEditProfile = document.querySelector(".profile__edit-button");
 const formEditProfile = document.querySelector(".popup__form_edit-button");
 const buttonPopup = document.querySelector(".popup__button");
+const nameInput = document.querySelector(".popup__input_type_name");
+const jobInput = document.querySelector(".popup__input_type_job");
 
 
 /*Форма Профиля*/
@@ -77,12 +79,13 @@ const popupEditCard = new PopupWithForm(
 );
 popupEditCard.setEventListeners();
 
+
 buttonEditProfile.addEventListener("click", function () {
   popupEditCard.open();
   formValidEditProfile.disabledButton();
-  /*const {name, about} = userNew.getUserInfo();
+  const {name, about} = userNew.getUserInfo();
   nameInput.value = name;
-  jobInput.value =about;*/
+  jobInput.value =about;
 });
 
 
