@@ -9,8 +9,8 @@ export const config = {
   conteinerInput: ".input-conteiner",
 };
 
-export const profileTitle = document.querySelector(".profile__title");
-export const profileText = document.querySelector(".profile__text");
+export const profileTitle = document.querySelector(".profile__text");
+export const profileText = document.querySelector(".profile__title");
 export const pofileAvatar = document.querySelector(".profile__avatar");
 
 

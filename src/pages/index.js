@@ -9,7 +9,6 @@ import { config, profileTitle, profileText,  pofileAvatar} from "../utils/consta
 import "./index.css";
 import { Api } from "../components/Api.js";
 
-
 /*Api*/
 
 const configs = {
@@ -27,7 +26,6 @@ const formEditProfile = document.querySelector(".popup__form_edit-button");
 const buttonPopup = document.querySelector(".popup__button");
 const nameInput = document.querySelector(".popup__input_type_name");
 const jobInput = document.querySelector(".popup__input_type_job");
-
 
 /*Форма Профиля*/
 const userNew = new UserInfo({profileText, 
@@ -71,14 +69,12 @@ function handleEditFormSubmit(formItemObject) {
   });
 };
 
-
 const popupEditCard = new PopupWithForm(
   ".popup_edit-button",
   ".popup__form_edit-button",
     handleEditFormSubmit
 );
 popupEditCard.setEventListeners();
-
 
 buttonEditProfile.addEventListener("click", function () {
   popupEditCard.open();
@@ -88,13 +84,11 @@ buttonEditProfile.addEventListener("click", function () {
   jobInput.value =about;
 });
 
-
 /*Изменение аватарки*/
 
-const buttonAvatar = document.querySelector(".profile__avatar");
+const buttonAvatar = document.querySelector(".profile__block");
 const formAvatar = document.querySelector(".popup__form_changing-avatar");
 const avatarRemove = document.querySelector(".popup__button-avatar")
-
 
 const formValidAvatar = new FormValidator(config, formAvatar);
 formValidAvatar.enableValidation();
@@ -104,7 +98,6 @@ const popupAvatar = new PopupWithForm(
 ".popup__form_changing-avatar",
  handleAvatarClick);
 popupAvatar.setEventListeners();
-
 
 function handleAvatarClick(data) {
   const initialText = avatarRemove.textContent;
@@ -122,8 +115,6 @@ function handleAvatarClick(data) {
   });
   
 }
-
-
 
 buttonAvatar.addEventListener("click", function () {
   popupAvatar.open();
@@ -185,7 +176,6 @@ const buttonAddCard = document.querySelector(".profile__add-button");
 /*а.Api загрузка карточек с сервера*/
 
 let userId = null;
-
 
 const section = new Section(".elements", (dataElements) => {
   section.addItem(createCard(dataElements));
